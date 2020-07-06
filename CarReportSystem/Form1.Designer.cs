@@ -33,21 +33,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Report = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.CreatedDate = new System.Windows.Forms.DateTimePicker();
+            this.Author = new System.Windows.Forms.ComboBox();
+            this.Name = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Picture = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btOpenImage = new System.Windows.Forms.Button();
+            this.btClearImage = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -55,8 +55,10 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.Maker = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
+            this.Maker.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -109,13 +111,13 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "レポート:";
             // 
-            // textBox1
+            // Report
             // 
-            this.textBox1.Location = new System.Drawing.Point(94, 173);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(292, 139);
-            this.textBox1.TabIndex = 1;
+            this.Report.Location = new System.Drawing.Point(94, 173);
+            this.Report.Multiline = true;
+            this.Report.Name = "Report";
+            this.Report.Size = new System.Drawing.Size(297, 139);
+            this.Report.TabIndex = 1;
             // 
             // label6
             // 
@@ -136,28 +138,28 @@
             this.dataGridView1.Size = new System.Drawing.Size(601, 161);
             this.dataGridView1.TabIndex = 2;
             // 
-            // dateTimePicker1
+            // CreatedDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(93, 9);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(184, 19);
-            this.dateTimePicker1.TabIndex = 3;
+            this.CreatedDate.Location = new System.Drawing.Point(93, 9);
+            this.CreatedDate.Name = "CreatedDate";
+            this.CreatedDate.Size = new System.Drawing.Size(184, 19);
+            this.CreatedDate.TabIndex = 3;
             // 
-            // comboBox1
+            // Author
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(93, 50);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(208, 20);
-            this.comboBox1.TabIndex = 4;
+            this.Author.FormattingEnabled = true;
+            this.Author.Location = new System.Drawing.Point(93, 50);
+            this.Author.Name = "Author";
+            this.Author.Size = new System.Drawing.Size(208, 20);
+            this.Author.TabIndex = 4;
             // 
-            // comboBox2
+            // Name
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(93, 130);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(208, 20);
-            this.comboBox2.TabIndex = 4;
+            this.Name.FormattingEnabled = true;
+            this.Name.Location = new System.Drawing.Point(94, 132);
+            this.Name.Name = "Name";
+            this.Name.Size = new System.Drawing.Size(208, 20);
+            this.Name.TabIndex = 4;
             // 
             // button1
             // 
@@ -177,15 +179,15 @@
             this.button2.Text = "保存";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // Picture
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(456, 65);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(239, 204);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.Picture.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Picture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Picture.Location = new System.Drawing.Point(456, 65);
+            this.Picture.Name = "Picture";
+            this.Picture.Size = new System.Drawing.Size(239, 204);
+            this.Picture.TabIndex = 6;
+            this.Picture.TabStop = false;
             // 
             // label7
             // 
@@ -199,7 +201,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(428, 286);
+            this.button3.Location = new System.Drawing.Point(413, 286);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(73, 23);
             this.button3.TabIndex = 7;
@@ -208,7 +210,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(528, 286);
+            this.button4.Location = new System.Drawing.Point(520, 286);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(70, 23);
             this.button4.TabIndex = 7;
@@ -217,30 +219,30 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(625, 286);
+            this.button5.Location = new System.Drawing.Point(624, 286);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(70, 23);
             this.button5.TabIndex = 7;
             this.button5.Text = "削除";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btOpenImage
             // 
-            this.button6.Location = new System.Drawing.Point(493, 36);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(82, 23);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "開く";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btOpenImage.Location = new System.Drawing.Point(493, 36);
+            this.btOpenImage.Name = "btOpenImage";
+            this.btOpenImage.Size = new System.Drawing.Size(82, 23);
+            this.btOpenImage.TabIndex = 7;
+            this.btOpenImage.Text = "開く";
+            this.btOpenImage.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btClearImage
             // 
-            this.button7.Location = new System.Drawing.Point(611, 36);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(84, 23);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "削除";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btClearImage.Location = new System.Drawing.Point(611, 36);
+            this.btClearImage.Name = "btClearImage";
+            this.btClearImage.Size = new System.Drawing.Size(84, 23);
+            this.btClearImage.TabIndex = 7;
+            this.btClearImage.Text = "削除";
+            this.btClearImage.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
@@ -255,7 +257,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.BackColor = System.Drawing.SystemColors.Control;
-            this.radioButton1.Location = new System.Drawing.Point(93, 91);
+            this.radioButton1.Location = new System.Drawing.Point(6, 18);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(47, 16);
             this.radioButton1.TabIndex = 8;
@@ -267,7 +269,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.BackColor = System.Drawing.SystemColors.Control;
-            this.radioButton2.Location = new System.Drawing.Point(146, 91);
+            this.radioButton2.Location = new System.Drawing.Point(59, 18);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(47, 16);
             this.radioButton2.TabIndex = 8;
@@ -279,7 +281,7 @@
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.BackColor = System.Drawing.SystemColors.Control;
-            this.radioButton3.Location = new System.Drawing.Point(199, 91);
+            this.radioButton3.Location = new System.Drawing.Point(112, 18);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(51, 16);
             this.radioButton3.TabIndex = 8;
@@ -291,7 +293,7 @@
             // 
             this.radioButton4.AutoSize = true;
             this.radioButton4.BackColor = System.Drawing.SystemColors.Control;
-            this.radioButton4.Location = new System.Drawing.Point(252, 90);
+            this.radioButton4.Location = new System.Drawing.Point(169, 18);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(52, 16);
             this.radioButton4.TabIndex = 8;
@@ -303,7 +305,7 @@
             // 
             this.radioButton5.AutoSize = true;
             this.radioButton5.BackColor = System.Drawing.SystemColors.Control;
-            this.radioButton5.Location = new System.Drawing.Point(305, 90);
+            this.radioButton5.Location = new System.Drawing.Point(227, 18);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(47, 16);
             this.radioButton5.TabIndex = 8;
@@ -315,7 +317,7 @@
             // 
             this.radioButton6.AutoSize = true;
             this.radioButton6.BackColor = System.Drawing.SystemColors.Control;
-            this.radioButton6.Location = new System.Drawing.Point(358, 90);
+            this.radioButton6.Location = new System.Drawing.Point(280, 18);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(54, 16);
             this.radioButton6.TabIndex = 8;
@@ -323,31 +325,41 @@
             this.radioButton6.Text = "その他";
             this.radioButton6.UseVisualStyleBackColor = false;
             // 
+            // Maker
+            // 
+            this.Maker.Controls.Add(this.radioButton1);
+            this.Maker.Controls.Add(this.radioButton6);
+            this.Maker.Controls.Add(this.radioButton2);
+            this.Maker.Controls.Add(this.radioButton5);
+            this.Maker.Controls.Add(this.radioButton3);
+            this.Maker.Controls.Add(this.radioButton4);
+            this.Maker.Location = new System.Drawing.Point(94, 76);
+            this.Maker.Name = "Maker";
+            this.Maker.Size = new System.Drawing.Size(339, 50);
+            this.Maker.TabIndex = 9;
+            this.Maker.TabStop = false;
+            this.Maker.Text = "groupBox";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 539);
-            this.Controls.Add(this.radioButton6);
-            this.Controls.Add(this.radioButton5);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.Maker);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btClearImage);
+            this.Controls.Add(this.btOpenImage);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Picture);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.Name);
+            this.Controls.Add(this.Author);
+            this.Controls.Add(this.CreatedDate);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Report);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -355,10 +367,12 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+           
             this.Text = "試乗レポート管理システム";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
+            this.Maker.ResumeLayout(false);
+            this.Maker.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,21 +385,21 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Report;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DateTimePicker CreatedDate;
+        private System.Windows.Forms.ComboBox Author;
+        private new System.Windows.Forms.ComboBox Name;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Picture;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btOpenImage;
+        private System.Windows.Forms.Button btClearImage;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
@@ -393,6 +407,7 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.GroupBox Maker;
     }
 }
 
