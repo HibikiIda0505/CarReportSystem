@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -137,9 +140,11 @@ namespace CarReportSystem
         }
 
 
-        /*private void dgvNewsData_Click(object sender, EventArgs e)
+        private void dgvNewsData_Click(object sender, EventArgs e)
         {
-            if (Form1.CurrentRow == null)
+            var test = dgvNewsData.CurrentRow.Cells[2].Value;   //選択している行の指定したセルの値を取得
+
+            /*if (Form1.CurrentRow == null)
                 return;
 
             //選択したレコードを取り出す
@@ -151,7 +156,8 @@ namespace CarReportSystem
             cbCar.Text = selectedCar.Name;
             tb.Text = selectedCar.Report;
             pbImage.Image = selectedCar.Picture;
-        }*/
+            */
+        }
 
         /*
         //修正ボタン 
@@ -188,7 +194,8 @@ namespace CarReportSystem
         {
             // TODO: このコード行はデータを 'infosys202005DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableAdapter.Fill(this.infosys202005DataSet.CarReport);
-            initButtons();
+            dgvNewsData.Columns[0].Visible = false; //idを非表示にする
+
         }
 
         /*
@@ -209,11 +216,53 @@ namespace CarReportSystem
 
         }
 
+        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void 新規入力ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            inputItemAllClear();
+        }
+
         //終了ボタン
         private void btEnd_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        
+
+        //接続ボタン
+        private void btSetuzoku_Click(object sender, EventArgs e)
+        {
+            this.carReportTableAdapter.Fill(this.infosys202005DataSet.CarReport);
+            initButtons();
+        }
+
+        //保存ボタン
+        private void btSave_Click(object sender, EventArgs e)
+        {
+            //セーブファイルダイアログを表示
+            if (sfdSaveData.ShowDialog() == DialogResult.OK)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+
+                //ファイルストリームを生成
+                using (FileStream fs = new FileStream(sfdSaveData.FileName, FileMode.Create))
+                {
+                    try
+                    {
+                        //シリアル化して保存
+                        formatter.Serialize(fs, _Cars);
+                    }
+                    catch (SerializationException se)
+                    {
+                        Console.WriteLine("Failed to serialize. Reason: " + se.Message);
+                        throw;
+                    }
+                }
+            }
+        }
+
     }
 }

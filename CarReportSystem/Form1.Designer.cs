@@ -40,8 +40,8 @@
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.cbAuthor = new System.Windows.Forms.ComboBox();
             this.cbCar = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btSetuzoku = new System.Windows.Forms.Button();
+            this.btSave = new System.Windows.Forms.Button();
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btAdd = new System.Windows.Forms.Button();
@@ -87,6 +87,8 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.carReportTableAdapter = new CarReportSystem.infosys202005DataSetTableAdapters.CarReportTableAdapter();
             this.tableAdapterManager = new CarReportSystem.infosys202005DataSetTableAdapters.TableAdapterManager();
+            this.sfdSaveData = new System.Windows.Forms.SaveFileDialog();
+            this.ofdOpenData = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.GroopBox.SuspendLayout();
             this.ファイルFToolStripMenuItem.SuspendLayout();
@@ -152,7 +154,7 @@
             this.tb.Location = new System.Drawing.Point(97, 230);
             this.tb.Multiline = true;
             this.tb.Name = "tb";
-            this.tb.Size = new System.Drawing.Size(339, 139);
+            this.tb.Size = new System.Drawing.Size(339, 129);
             this.tb.TabIndex = 1;
             // 
             // label6
@@ -188,23 +190,25 @@
             this.cbCar.Size = new System.Drawing.Size(208, 20);
             this.cbCar.TabIndex = 4;
             // 
-            // button1
+            // btSetuzoku
             // 
-            this.button1.Location = new System.Drawing.Point(15, 404);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(62, 41);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "接続";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btSetuzoku.Location = new System.Drawing.Point(15, 404);
+            this.btSetuzoku.Name = "btSetuzoku";
+            this.btSetuzoku.Size = new System.Drawing.Size(62, 41);
+            this.btSetuzoku.TabIndex = 5;
+            this.btSetuzoku.Text = "接続";
+            this.btSetuzoku.UseVisualStyleBackColor = true;
+            this.btSetuzoku.Click += new System.EventHandler(this.btSetuzoku_Click);
             // 
-            // button2
+            // btSave
             // 
-            this.button2.Location = new System.Drawing.Point(15, 467);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(62, 41);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "保存";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btSave.Location = new System.Drawing.Point(12, 478);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(62, 41);
+            this.btSave.TabIndex = 5;
+            this.btSave.Text = "保存";
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // pbImage
             // 
@@ -499,6 +503,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "位置";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -554,10 +559,12 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewImageColumn1});
             this.dgvNewsData.DataSource = this.carReportBindingSource;
-            this.dgvNewsData.Location = new System.Drawing.Point(96, 391);
+            this.dgvNewsData.Location = new System.Drawing.Point(96, 375);
+            this.dgvNewsData.MultiSelect = false;
             this.dgvNewsData.Name = "dgvNewsData";
             this.dgvNewsData.RowTemplate.Height = 21;
-            this.dgvNewsData.Size = new System.Drawing.Size(616, 184);
+            this.dgvNewsData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvNewsData.Size = new System.Drawing.Size(616, 200);
             this.dgvNewsData.TabIndex = 23;
             // 
             // dataGridViewTextBoxColumn1
@@ -612,6 +619,10 @@
             this.tableAdapterManager.CarReportTableAdapter = this.carReportTableAdapter;
             this.tableAdapterManager.UpdateOrder = CarReportSystem.infosys202005DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // ofdOpenData
+            // 
+            this.ofdOpenData.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -628,8 +639,8 @@
             this.Controls.Add(this.btOpenImage);
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.pbImage);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btSave);
+            this.Controls.Add(this.btSetuzoku);
             this.Controls.Add(this.cbCar);
             this.Controls.Add(this.cbAuthor);
             this.Controls.Add(this.dtpDate);
@@ -674,8 +685,8 @@
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.ComboBox cbAuthor;
         private new System.Windows.Forms.ComboBox cbCar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btSetuzoku;
+        private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btAdd;
@@ -721,6 +732,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.SaveFileDialog sfdSaveData;
+        private System.Windows.Forms.OpenFileDialog ofdOpenData;
     }
 }
 
