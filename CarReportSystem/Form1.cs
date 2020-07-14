@@ -19,7 +19,7 @@ namespace CarReportSystem
         public Form1()
         {
             InitializeComponent();
-            dgvNewsData.DataSource = _Cars;
+            //dgvNewsData.DataSource = _Cars;
         }
 
         //追加ボタン
@@ -51,12 +51,13 @@ namespace CarReportSystem
             _Cars.Insert(0, obj); //リストの先頭（インデックス０）へ追加
 
             //高さを自動調整
-            dgvNewsData.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            //Form1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
             //次の入力に備えて各項目をクリア
             inputItemAllClear();
             initButtons();
-            dgvNewsData.ClearSelection();    //選択行をクリア
+
+            //Form1.ClearSelection();    //選択行をクリア
         }
 
         private CarMaker MakerSerect()
@@ -135,27 +136,29 @@ namespace CarReportSystem
             pbImage.Image = null;
         }
 
-        private void dgvNewsData_Click(object sender, EventArgs e)
+
+        /*private void dgvNewsData_Click(object sender, EventArgs e)
         {
-            if (dgvNewsData.CurrentRow == null)
+            if (Form1.CurrentRow == null)
                 return;
 
             //選択したレコードを取り出す
             //データグリッドビューで選択した行のインデックスを元に
             //BindingListのデータを取得する
-            CarReport selectedCar = _Cars[dgvNewsData.CurrentRow.Index];
+            CarReport selectedCar = _Cars[Form1.CurrentRow.Index];
             dtpDate.Value = selectedCar.CreatedDate;
             cbAuthor.Text = selectedCar.Author;
             cbCar.Text = selectedCar.Name;
             tb.Text = selectedCar.Report;
             pbImage.Image = selectedCar.Picture;
-        }
+        }*/
 
+        /*
         //修正ボタン 
         private void btRevise_Click(object sender, EventArgs e)
         {
             //修正対象のレコード（オブジェクト）
-            CarReport selectedCar = _Cars[dgvNewsData.CurrentRow.Index];
+            CarReport selectedCar = _Cars[Form1.CurrentRow.Index];
             selectedCar.CreatedDate = dtpDate.Value;
             selectedCar.Author = cbAuthor.Text;
             selectedCar.Maker = MakerSerect();
@@ -163,8 +166,8 @@ namespace CarReportSystem
             selectedCar.Report = tb.Text;
             selectedCar.Picture = pbImage.Image;
 
-            dgvNewsData.Refresh();  //データグリッドビューの再描画
-        }
+            Form1.Refresh();  //データグリッドビューの再描画
+        }*/
 
         //マスク処理
         private void initButtons()
@@ -183,16 +186,34 @@ namespace CarReportSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: このコード行はデータを 'infosys202005DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableAdapter.Fill(this.infosys202005DataSet.CarReport);
             initButtons();
         }
 
+        /*
         //削除ボタン
         private void btDelete_Click(object sender, EventArgs e)
         {
-            _Cars.RemoveAt(dgvNewsData.CurrentRow.Index);
+            _Cars.RemoveAt(Form1.CurrentRow.Index);
             initButtons();
             inputItemAllClear();
-            dgvNewsData.ClearSelection();
+            Form1.ClearSelection();
+        }*/
+
+        private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202005DataSet);
+
         }
+
+        //終了ボタン
+        private void btEnd_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        
     }
 }

@@ -419,10 +419,10 @@ namespace CarReportSystem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public CarReportRow AddCarReportRow(int id, System.DateTime CreatedDate, string Author, string Maker, string Name, string Report, byte[] Picture) {
+            public CarReportRow AddCarReportRow(System.DateTime CreatedDate, string Author, string Maker, string Name, string Report, byte[] Picture) {
                 CarReportRow rowCarReportRow = ((CarReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        id,
+                        null,
                         CreatedDate,
                         Author,
                         Maker,
@@ -486,6 +486,8 @@ namespace CarReportSystem {
                 base.Columns.Add(this.columnPicture);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
+                this.columnid.AutoIncrement = true;
+                this.columnid.AutoIncrementSeed = 1;
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
                 this.columnCreatedDate.AllowDBNull = false;
