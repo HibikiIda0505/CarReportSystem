@@ -131,9 +131,9 @@
             this.label6.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label6.Location = new System.Drawing.Point(21, 344);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "記事一覧:";
+            this.label6.Text = "データ一覧:";
             // 
             // dgvNewsData
             // 
@@ -173,7 +173,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(62, 41);
             this.button1.TabIndex = 5;
-            this.button1.Text = "開く";
+            this.button1.Text = "接続";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
