@@ -139,12 +139,12 @@ namespace CarReportSystem
             pbImage.Image = null;
         }
 
-
+        /*
         private void dgvNewsData_Click(object sender, EventArgs e)
         {
             var test = dgvNewsData.CurrentRow.Cells[2].Value;   //選択している行の指定したセルの値を取得
 
-            /*if (Form1.CurrentRow == null)
+            if (Form1.CurrentRow == null)
                 return;
 
             //選択したレコードを取り出す
@@ -156,23 +156,7 @@ namespace CarReportSystem
             cbCar.Text = selectedCar.Name;
             tb.Text = selectedCar.Report;
             pbImage.Image = selectedCar.Picture;
-            */
-        }
-
-        /*
-        //修正ボタン 
-        private void btRevise_Click(object sender, EventArgs e)
-        {
-            //修正対象のレコード（オブジェクト）
-            CarReport selectedCar = _Cars[Form1.CurrentRow.Index];
-            selectedCar.CreatedDate = dtpDate.Value;
-            selectedCar.Author = cbAuthor.Text;
-            selectedCar.Maker = MakerSerect();
-            selectedCar.Name = cbCar.Text;
-            selectedCar.Report = tb.Text;
-            selectedCar.Picture = pbImage.Image;
-
-            Form1.Refresh();  //データグリッドビューの再描画
+            
         }*/
 
         //マスク処理
@@ -180,50 +164,52 @@ namespace CarReportSystem
         {
             if (_Cars.Count > 0)
             {
-                btRevise.Enabled = true;
+                btRevice.Enabled = true;
                 btDelete.Enabled = true;
+                btSetuzoku.Enabled = true;
             }
             else
             {
-                btRevise.Enabled = false;
+                btRevice.Enabled = false;
                 btDelete.Enabled = false;
+                btSetuzoku.Enabled = false;
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: このコード行はデータを 'infosys202005DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            this.carReportTableAdapter.Fill(this.infosys202005DataSet.CarReport);
+            //this.carReportTableAdapter.Fill(this.infosys202005DataSet.CarReport);
             dgvNewsData.Columns[0].Visible = false; //idを非表示にする
 
         }
 
-        /*
         //削除ボタン
         private void btDelete_Click(object sender, EventArgs e)
         {
-            _Cars.RemoveAt(Form1.CurrentRow.Index);
-            initButtons();
-            inputItemAllClear();
-            Form1.ClearSelection();
-        }*/
+            //_Cars.RemoveAt(Form1.CurrentRow.Index);
+            //initButtons();
+            //inputItemAllClear();
+            //Form1.ClearSelection();
+        }
 
-        private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        /*private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.carReportBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202005DataSet);
 
-        }
+        }*/
 
-        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void 新規入力ToolStripMenuItem_Click(object sender, EventArgs e)
+        //ファイルメニュー
+        private void 新規入力ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             inputItemAllClear();
+        }
+
+        private void 終了XToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         //終了ボタン
@@ -264,5 +250,73 @@ namespace CarReportSystem
             }
         }
 
+        //データグリッドビューのデータを読み込む
+        private void dgvNewsData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var  = dgvNewsData.CurrentRow.Cells[1].Value;
+
+            //選択したレコード（行）の、インデックスで指定した項目を取り出す
+            var maker = dgvNewsData.CurrentRow.Cells[3].Value;
+
+            //ラジオボタンの設定
+            setRadioButtunMaker((string)maker);
+        }
+
+        private void setRadioButtunMaker(string carMaker)
+        {
+            switch (carMaker)
+            {
+                case "トヨタ":
+                    rbToyota.Checked = true;
+                    break;
+
+                case "日産":
+                    rbNissan.Checked = true;
+                    break;
+
+                case "ホンダ":
+                    rbHonda.Checked = true;
+                    break;
+
+                case "スバル":
+                    rbSubaru.Checked = true;
+                    break;
+
+                case "外車":
+                    rbGaisya.Checked = true;
+                    break;
+
+                case "その他":
+                    rbSonota.Checked = true;
+                    break;
+            }
+        }
+
+        // バイト配列をImageオブジェクトに変換
+        public static Image ByteArrayToImage(byte[] byteData)
+        {
+            ImageConverter imgconv = new ImageConverter();
+            Image img = (Image)imgconv.ConvertFrom(byteData);
+            return img;
+        }
+
+        // Imageオブジェクトをバイト配列に変換
+        public static byte[] ImageToByteArray(Image img)
+        {
+            ImageConverter imgconv = new ImageConverter();
+            byte[] byteData = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
+            return byteData;
+        }
+
+        private void btRevice_Click(object sender, EventArgs e)
+        {
+            dgvNewsData.CurrentRow.Cells[2].Value = cbAuthor.Text;
+
+            //データベース反映
+            this.Validate();
+            this.carReportBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202005DataSet);
+
+        }
     }
 }
