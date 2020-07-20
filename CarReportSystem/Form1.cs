@@ -23,6 +23,7 @@ namespace CarReportSystem
         {
             InitializeComponent();
             //dgvNewsData.DataSource = _Cars;
+
         }
 
         //追加ボタン
@@ -41,7 +42,7 @@ namespace CarReportSystem
                 Author = cbAuthor.Text,
                 Maker = MakerSerect(),
                 Name = cbCar.Text,
-                Report = tb.Text,
+                Report = textBox.Text,
                 Picture = pbImage.Image,
             };
 
@@ -98,7 +99,7 @@ namespace CarReportSystem
         {
             cbAuthor.Text = "";
             cbCar.Text = "";
-            tb.Text = "";
+            textBox.Text = "";
             pbImage.Image = null;
         }
 
@@ -133,7 +134,7 @@ namespace CarReportSystem
             }
         }
 
-        //画像の削除
+        //画像の削除ボタン
         private void btClearImage_Click(object sender, EventArgs e)
         {
             pbImage.Image = null;
@@ -163,28 +164,22 @@ namespace CarReportSystem
         private void initButtons()
         {
             if (_Cars.Count > 0)
-            {
-                btRevice.Enabled = true;
-                btDelete.Enabled = true;
+            {         
                 btSetuzoku.Enabled = true;
             }
             else
             {
-                btRevice.Enabled = false;
-                btDelete.Enabled = false;
                 btSetuzoku.Enabled = false;
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: このコード行はデータを 'infosys202005DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            //this.carReportTableAdapter.Fill(this.infosys202005DataSet.CarReport);
-            dgvNewsData.Columns[0].Visible = false; //idを非表示にする
+            
 
         }
 
-        //削除ボタン
+        /*削除ボタン
         private void btDelete_Click(object sender, EventArgs e)
         {
             //_Cars.RemoveAt(Form1.CurrentRow.Index);
@@ -193,7 +188,7 @@ namespace CarReportSystem
             //Form1.ClearSelection();
         }
 
-        /*private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.carReportBindingSource.EndEdit();
@@ -212,6 +207,13 @@ namespace CarReportSystem
             Application.Exit();
         }
 
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: このコード行はデータを 'infosys202005DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableAdapter.Fill(this.infosys202005DataSet.CarReport);
+            //dgvNewsData.Columns[0].Visible = false; //idを非表示にする
+        }
+
         //終了ボタン
         private void btEnd_Click(object sender, EventArgs e)
         {
@@ -228,38 +230,29 @@ namespace CarReportSystem
         //保存ボタン
         private void btSave_Click(object sender, EventArgs e)
         {
-            //セーブファイルダイアログを表示
-            if (sfdSaveData.ShowDialog() == DialogResult.OK)
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
+            
 
-                //ファイルストリームを生成
-                using (FileStream fs = new FileStream(sfdSaveData.FileName, FileMode.Create))
-                {
-                    try
-                    {
-                        //シリアル化して保存
-                        formatter.Serialize(fs, _Cars);
-                    }
-                    catch (SerializationException se)
-                    {
-                        Console.WriteLine("Failed to serialize. Reason: " + se.Message);
-                        throw;
-                    }
-                }
-            }
         }
 
         //データグリッドビューのデータを読み込む
-        private void dgvNewsData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvNewsData_Click(object sender, EventArgs e)
         {
-            var  = dgvNewsData.CurrentRow.Cells[1].Value;
-
             //選択したレコード（行）の、インデックスで指定した項目を取り出す
+
+            //作成日
+            dtpDate.Value = (DateTime)dgvNewsData.CurrentRow.Cells[1].Value;
+            //メーカー
             var maker = dgvNewsData.CurrentRow.Cells[3].Value;
+            //編集者
+            cbAuthor.Text = dgvNewsData.CurrentRow.Cells[2].Value.ToString();
+            //車名
+            cbCar.Text = dgvNewsData.CurrentRow.Cells[4].Value.ToString();
+            //レポート
+            textBox.Text = dgvNewsData.CurrentRow.Cells[5].Value.ToString();
 
             //ラジオボタンの設定
             setRadioButtunMaker((string)maker);
+
         }
 
         private void setRadioButtunMaker(string carMaker)
@@ -292,6 +285,7 @@ namespace CarReportSystem
             }
         }
 
+        //データベースから画像をピクチャーボックスへ表示するとき
         // バイト配列をImageオブジェクトに変換
         public static Image ByteArrayToImage(byte[] byteData)
         {
@@ -300,6 +294,7 @@ namespace CarReportSystem
             return img;
         }
 
+        //ピクチャーボックスからデータベースへ登録するとき
         // Imageオブジェクトをバイト配列に変換
         public static byte[] ImageToByteArray(Image img)
         {
@@ -308,14 +303,22 @@ namespace CarReportSystem
             return byteData;
         }
 
+        //修正ボタン
         private void btRevice_Click(object sender, EventArgs e)
         {
             dgvNewsData.CurrentRow.Cells[2].Value = cbAuthor.Text;
+            
 
-            //データベース反映
+            //データベース更新（反映）
             this.Validate();
             this.carReportBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202005DataSet);
+
+        }
+
+        //削除ボタン
+        private void btDelete_Click_1(object sender, EventArgs e)
+        {
 
         }
     }

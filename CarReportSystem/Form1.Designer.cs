@@ -34,7 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.tb = new System.Windows.Forms.TextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.cbAuthor = new System.Windows.Forms.ComboBox();
@@ -61,6 +61,7 @@
             this.ファイルFToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.新規入力ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.infosys202005DataSet = new CarReportSystem.infosys202005DataSet();
             this.dgvNewsData = new System.Windows.Forms.DataGridView();
@@ -133,13 +134,13 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "レポート:";
             // 
-            // tb
+            // textBox
             // 
-            this.tb.Location = new System.Drawing.Point(99, 202);
-            this.tb.Multiline = true;
-            this.tb.Name = "tb";
-            this.tb.Size = new System.Drawing.Size(339, 129);
-            this.tb.TabIndex = 1;
+            this.textBox.Location = new System.Drawing.Point(99, 202);
+            this.textBox.Multiline = true;
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(339, 129);
+            this.textBox.TabIndex = 1;
             // 
             // label6
             // 
@@ -242,6 +243,7 @@
             this.btDelete.TabIndex = 7;
             this.btDelete.Text = "削除";
             this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click_1);
             // 
             // btOpenImage
             // 
@@ -370,7 +372,7 @@
             this.ファイルFToolStripMenuItem1});
             this.ファイルFToolStripMenuItem.Location = new System.Drawing.Point(0, 0);
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
-            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(871, 24);
+            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(870, 24);
             this.ファイルFToolStripMenuItem.TabIndex = 10;
             this.ファイルFToolStripMenuItem.Text = "ファイル(&F)";
             // 
@@ -378,7 +380,8 @@
             // 
             this.ファイルFToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.新規入力ToolStripMenuItem,
-            this.終了XToolStripMenuItem});
+            this.終了XToolStripMenuItem,
+            this.開くToolStripMenuItem});
             this.ファイルFToolStripMenuItem1.Name = "ファイルFToolStripMenuItem1";
             this.ファイルFToolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
             this.ファイルFToolStripMenuItem1.Text = "ファイル(&F)";
@@ -397,6 +400,13 @@
             this.終了XToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click_1);
+            // 
+            // 開くToolStripMenuItem
+            // 
+            this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
+            this.開くToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.開くToolStripMenuItem.Text = "開く";
+            this.開くToolStripMenuItem.Click += new System.EventHandler(this.開くToolStripMenuItem_Click);
             // 
             // carReportBindingSource
             // 
@@ -428,7 +438,7 @@
             this.dgvNewsData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNewsData.Size = new System.Drawing.Size(753, 200);
             this.dgvNewsData.TabIndex = 23;
-            this.dgvNewsData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNewsData_CellContentClick);
+            this.dgvNewsData.Click += new System.EventHandler(this.dgvNewsData_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -491,7 +501,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(871, 597);
+            this.ClientSize = new System.Drawing.Size(870, 597);
             this.Controls.Add(this.dgvNewsData);
             this.Controls.Add(this.GroopBox);
             this.Controls.Add(this.btDelete);
@@ -506,7 +516,7 @@
             this.Controls.Add(this.cbCar);
             this.Controls.Add(this.cbAuthor);
             this.Controls.Add(this.dtpDate);
-            this.Controls.Add(this.tb);
+            this.Controls.Add(this.textBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -539,7 +549,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tb;
+        private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.ComboBox cbAuthor;
@@ -580,6 +590,7 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.SaveFileDialog sfdSaveData;
         private System.Windows.Forms.OpenFileDialog ofdOpenData;
+        private System.Windows.Forms.ToolStripMenuItem 開くToolStripMenuItem;
     }
 }
 
