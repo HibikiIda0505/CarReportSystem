@@ -76,12 +76,17 @@
             this.tableAdapterManager = new CarReportSystem.infosys202005DataSetTableAdapters.TableAdapterManager();
             this.sfdSaveData = new System.Windows.Forms.SaveFileDialog();
             this.ofdOpenData = new System.Windows.Forms.OpenFileDialog();
+            this.tbSearchCarName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btSearchExe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.GroopBox.SuspendLayout();
             this.ファイルFToolStripMenuItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202005DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewsData)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -202,6 +207,7 @@
             this.pbImage.Location = new System.Drawing.Point(529, 79);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(277, 204);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbImage.TabIndex = 6;
             this.pbImage.TabStop = false;
             // 
@@ -243,7 +249,7 @@
             this.btDelete.TabIndex = 7;
             this.btDelete.Text = "削除";
             this.btDelete.UseVisualStyleBackColor = true;
-            this.btDelete.Click += new System.EventHandler(this.btDelete_Click_1);
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // btOpenImage
             // 
@@ -372,7 +378,7 @@
             this.ファイルFToolStripMenuItem1});
             this.ファイルFToolStripMenuItem.Location = new System.Drawing.Point(0, 0);
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
-            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(870, 24);
+            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(1168, 24);
             this.ファイルFToolStripMenuItem.TabIndex = 10;
             this.ファイルFToolStripMenuItem.Text = "ファイル(&F)";
             // 
@@ -496,12 +502,51 @@
             // 
             this.ofdOpenData.FileName = "openFileDialog1";
             // 
+            // tbSearchCarName
+            // 
+            this.tbSearchCarName.Location = new System.Drawing.Point(41, 23);
+            this.tbSearchCarName.Name = "tbSearchCarName";
+            this.tbSearchCarName.Size = new System.Drawing.Size(180, 19);
+            this.tbSearchCarName.TabIndex = 24;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 12);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "車名";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.groupBox1.Controls.Add(this.btSearchExe);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.tbSearchCarName);
+            this.groupBox1.Location = new System.Drawing.Point(882, 79);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(262, 128);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "検索";
+            // 
+            // btSearchExe
+            // 
+            this.btSearchExe.Location = new System.Drawing.Point(41, 53);
+            this.btSearchExe.Name = "btSearchExe";
+            this.btSearchExe.Size = new System.Drawing.Size(75, 31);
+            this.btSearchExe.TabIndex = 0;
+            this.btSearchExe.Text = "実行";
+            this.btSearchExe.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(870, 597);
+            this.ClientSize = new System.Drawing.Size(1168, 597);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvNewsData);
             this.Controls.Add(this.GroopBox);
             this.Controls.Add(this.btDelete);
@@ -537,6 +582,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202005DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewsData)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,6 +638,10 @@
         private System.Windows.Forms.SaveFileDialog sfdSaveData;
         private System.Windows.Forms.OpenFileDialog ofdOpenData;
         private System.Windows.Forms.ToolStripMenuItem 開くToolStripMenuItem;
+        private System.Windows.Forms.TextBox tbSearchCarName;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btSearchExe;
     }
 }
 

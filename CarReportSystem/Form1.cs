@@ -26,7 +26,7 @@ namespace CarReportSystem
 
         }
 
-        //追加ボタン
+        //登録ボタン
         private void btAdd_Click(object sender, EventArgs e)
         {
             if (cbAuthor.Text == "")
@@ -176,7 +176,6 @@ namespace CarReportSystem
         private void Form1_Load(object sender, EventArgs e)
         {
             
-
         }
 
         /*削除ボタン
@@ -230,28 +229,60 @@ namespace CarReportSystem
         //保存ボタン
         private void btSave_Click(object sender, EventArgs e)
         {
-            
+            //セーブファイルダイアログを表示
+            if (sfdSaveData.ShowDialog() == DialogResult.OK)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
 
+                //ファイルストリームを生成
+                using (FileStream fs = new FileStream(sfdSaveData.FileName, FileMode.Create))
+                {
+                    try
+                    {
+                        //シリアル化して保存
+                        formatter.Serialize(fs, _Cars);
+                    }
+                    catch (SerializationException se)
+                    {
+                        Console.WriteLine("Failed to serialize. Reason: " + se.Message);
+                        throw;
+                    }
+                }
+            }
         }
 
         //データグリッドビューのデータを読み込む
         private void dgvNewsData_Click(object sender, EventArgs e)
         {
-            //選択したレコード（行）の、インデックスで指定した項目を取り出す
+            try
+            {   //選択したレコード（行）の、インデックスで指定した項目を取り出す
 
-            //作成日
-            dtpDate.Value = (DateTime)dgvNewsData.CurrentRow.Cells[1].Value;
-            //メーカー
-            var maker = dgvNewsData.CurrentRow.Cells[3].Value;
-            //編集者
-            cbAuthor.Text = dgvNewsData.CurrentRow.Cells[2].Value.ToString();
-            //車名
-            cbCar.Text = dgvNewsData.CurrentRow.Cells[4].Value.ToString();
-            //レポート
-            textBox.Text = dgvNewsData.CurrentRow.Cells[5].Value.ToString();
+                //作成日
+                dtpDate.Value = (DateTime)dgvNewsData.CurrentRow.Cells[1].Value;
+                //編集者
+                cbAuthor.Text = dgvNewsData.CurrentRow.Cells[2].Value.ToString();
+                //メーカー
+                var maker = dgvNewsData.CurrentRow.Cells[3].Value;
+                //車名
+                cbCar.Text = dgvNewsData.CurrentRow.Cells[4].Value.ToString();
+                //レポート
+                textBox.Text = dgvNewsData.CurrentRow.Cells[5].Value.ToString();
+                //画像
+                pbImage.Image = ByteArrayToImage((byte[])dgvNewsData.CurrentRow.Cells[6].Value);
 
-            //ラジオボタンの設定
-            setRadioButtunMaker((string)maker);
+                //ラジオボタンの設定
+                setRadioButtunMaker((string)maker);
+
+            }
+            //以下エラー
+            catch (InvalidCastException) //画像がDBに登録されていないとき
+            {
+                pbImage.Image = null;
+            }
+            catch(Exception ex) //上記以外のデータ全て拾う
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
@@ -306,8 +337,20 @@ namespace CarReportSystem
         //修正ボタン
         private void btRevice_Click(object sender, EventArgs e)
         {
+            dgvNewsData.CurrentRow.Cells[1].Value = dtpDate;
             dgvNewsData.CurrentRow.Cells[2].Value = cbAuthor.Text;
-            
+            dgvNewsData.CurrentRow.Cells[3].Value = getMakerRadioButton();
+            dgvNewsData.CurrentRow.Cells[4].Value = cbCar.Text;
+            dgvNewsData.CurrentRow.Cells[5].Value = textBox.Text;
+
+            if (pbImage.Image != null)
+            {
+                dgvNewsData.CurrentRow.Cells[6].Value = ImageToByteArray(pbImage.Image);
+            }
+            else
+            {
+                dgvNewsData.CurrentRow.Cells[6].Value = null;
+            }
 
             //データベース更新（反映）
             this.Validate();
@@ -315,11 +358,43 @@ namespace CarReportSystem
             this.tableAdapterManager.UpdateAll(this.infosys202005DataSet);
 
         }
+        private string getMakerRadioButton()
+        {
+            if (rbToyota.Checked)
+            {
+                return rbToyota.Text;
+            }
+            else if (rbNissan.Checked)
+            {
+                return rbNissan.Text;
+            }
+            else if (rbHonda.Checked)
+            {
+                return rbHonda.Text;
+            }
+            else if (rbSubaru.Checked)
+            {
+                return rbSubaru.Text;
+            }
+            else if (rbGaisya.Checked)
+            {
+                return rbGaisya.Text;
+            }
+            else if (rbSonota.Checked)
+            {
+                return rbSonota.Text;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         //削除ボタン
-        private void btDelete_Click_1(object sender, EventArgs e)
+        private void btDelete_Click(object sender, EventArgs e)
         {
-
+            initButtons();
+            inputItemAllClear();
         }
     }
 }
