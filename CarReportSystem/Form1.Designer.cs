@@ -62,9 +62,13 @@
             this.新規入力ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.carReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.infosys202005DataSet = new CarReportSystem.infosys202005DataSet();
             this.dgvNewsData = new System.Windows.Forms.DataGridView();
+            this.sfdSaveData = new System.Windows.Forms.SaveFileDialog();
+            this.ofdOpenData = new System.Windows.Forms.OpenFileDialog();
+            this.tbSearchCarName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btSearchExe = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,21 +76,21 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.carReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.infosys202005DataSet = new CarReportSystem.infosys202005DataSet();
             this.carReportTableAdapter = new CarReportSystem.infosys202005DataSetTableAdapters.CarReportTableAdapter();
             this.tableAdapterManager = new CarReportSystem.infosys202005DataSetTableAdapters.TableAdapterManager();
-            this.sfdSaveData = new System.Windows.Forms.SaveFileDialog();
-            this.ofdOpenData = new System.Windows.Forms.OpenFileDialog();
-            this.tbSearchCarName = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btSearchExe = new System.Windows.Forms.Button();
+            this.tbSearchDate = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbSearchMaker = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.GroopBox.SuspendLayout();
             this.ファイルFToolStripMenuItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.infosys202005DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewsData)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infosys202005DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -414,16 +418,6 @@
             this.開くToolStripMenuItem.Text = "開く";
             this.開くToolStripMenuItem.Click += new System.EventHandler(this.開くToolStripMenuItem_Click);
             // 
-            // carReportBindingSource
-            // 
-            this.carReportBindingSource.DataMember = "CarReport";
-            this.carReportBindingSource.DataSource = this.infosys202005DataSet;
-            // 
-            // infosys202005DataSet
-            // 
-            this.infosys202005DataSet.DataSetName = "infosys202005DataSet";
-            this.infosys202005DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // dgvNewsData
             // 
             this.dgvNewsData.AutoGenerateColumns = false;
@@ -445,6 +439,53 @@
             this.dgvNewsData.Size = new System.Drawing.Size(753, 200);
             this.dgvNewsData.TabIndex = 23;
             this.dgvNewsData.Click += new System.EventHandler(this.dgvNewsData_Click);
+            // 
+            // ofdOpenData
+            // 
+            this.ofdOpenData.FileName = "openFileDialog1";
+            // 
+            // tbSearchCarName
+            // 
+            this.tbSearchCarName.Location = new System.Drawing.Point(52, 23);
+            this.tbSearchCarName.Name = "tbSearchCarName";
+            this.tbSearchCarName.Size = new System.Drawing.Size(180, 19);
+            this.tbSearchCarName.TabIndex = 24;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 12);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "車名";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.tbSearchMaker);
+            this.groupBox1.Controls.Add(this.tbSearchDate);
+            this.groupBox1.Controls.Add(this.btSearchExe);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.tbSearchCarName);
+            this.groupBox1.Location = new System.Drawing.Point(866, 79);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(277, 243);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "検索";
+            // 
+            // btSearchExe
+            // 
+            this.btSearchExe.Location = new System.Drawing.Point(52, 173);
+            this.btSearchExe.Name = "btSearchExe";
+            this.btSearchExe.Size = new System.Drawing.Size(180, 31);
+            this.btSearchExe.TabIndex = 0;
+            this.btSearchExe.Text = "実行";
+            this.btSearchExe.UseVisualStyleBackColor = true;
+            this.btSearchExe.Click += new System.EventHandler(this.btSearchExe_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -488,6 +529,16 @@
             this.dataGridViewImageColumn1.HeaderText = "Picture";
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
+            // carReportBindingSource
+            // 
+            this.carReportBindingSource.DataMember = "CarReport";
+            this.carReportBindingSource.DataSource = this.infosys202005DataSet;
+            // 
+            // infosys202005DataSet
+            // 
+            this.infosys202005DataSet.DataSetName = "infosys202005DataSet";
+            this.infosys202005DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // carReportTableAdapter
             // 
             this.carReportTableAdapter.ClearBeforeFill = true;
@@ -498,47 +549,37 @@
             this.tableAdapterManager.CarReportTableAdapter = this.carReportTableAdapter;
             this.tableAdapterManager.UpdateOrder = CarReportSystem.infosys202005DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // ofdOpenData
+            // tbSearchDate
             // 
-            this.ofdOpenData.FileName = "openFileDialog1";
+            this.tbSearchDate.Location = new System.Drawing.Point(52, 61);
+            this.tbSearchDate.Name = "tbSearchDate";
+            this.tbSearchDate.Size = new System.Drawing.Size(180, 19);
+            this.tbSearchDate.TabIndex = 26;
             // 
-            // tbSearchCarName
+            // label9
             // 
-            this.tbSearchCarName.Location = new System.Drawing.Point(41, 23);
-            this.tbSearchCarName.Name = "tbSearchCarName";
-            this.tbSearchCarName.Size = new System.Drawing.Size(180, 19);
-            this.tbSearchCarName.TabIndex = 24;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 64);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(29, 12);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "日付";
             // 
-            // label8
+            // label10
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 26);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 12);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "車名";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(4, 102);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 12);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "メーカー";
             // 
-            // groupBox1
+            // tbSearchMaker
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.groupBox1.Controls.Add(this.btSearchExe);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.tbSearchCarName);
-            this.groupBox1.Location = new System.Drawing.Point(882, 79);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(262, 128);
-            this.groupBox1.TabIndex = 26;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "検索";
-            // 
-            // btSearchExe
-            // 
-            this.btSearchExe.Location = new System.Drawing.Point(41, 53);
-            this.btSearchExe.Name = "btSearchExe";
-            this.btSearchExe.Size = new System.Drawing.Size(75, 31);
-            this.btSearchExe.TabIndex = 0;
-            this.btSearchExe.Text = "実行";
-            this.btSearchExe.UseVisualStyleBackColor = true;
+            this.tbSearchMaker.Location = new System.Drawing.Point(52, 99);
+            this.tbSearchMaker.Name = "tbSearchMaker";
+            this.tbSearchMaker.Size = new System.Drawing.Size(180, 19);
+            this.tbSearchMaker.TabIndex = 26;
             // 
             // Form1
             // 
@@ -579,11 +620,11 @@
             this.GroopBox.PerformLayout();
             this.ファイルFToolStripMenuItem.ResumeLayout(false);
             this.ファイルFToolStripMenuItem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.infosys202005DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNewsData)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.carReportBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infosys202005DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -642,6 +683,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btSearchExe;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbSearchDate;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbSearchMaker;
     }
 }
 

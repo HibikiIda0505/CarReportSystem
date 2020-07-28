@@ -396,5 +396,15 @@ namespace CarReportSystem
             initButtons();
             inputItemAllClear();
         }
+
+        private void btSearchExe_Click(object sender, EventArgs e)
+        {
+            this.carReportTableAdapter.FillByCarName(this.infosys202005DataSet.CarReport, tbSearchCarName.Text);
+
+            this.carReportTableAdapter.FillByCreatedDate(this.infosys202005DataSet.CarReport, tbSearchDate.Text);
+            this.carReportTableAdapter.FillByCarMaker(this.infosys202005DataSet.CarReport, tbSearchMaker.Text);
+
+        }
+
     }
 }
