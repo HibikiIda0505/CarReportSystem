@@ -68,6 +68,9 @@
             this.tbSearchCarName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbSearchMaker = new System.Windows.Forms.TextBox();
             this.btSearchExe = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,10 +83,8 @@
             this.infosys202005DataSet = new CarReportSystem.infosys202005DataSet();
             this.carReportTableAdapter = new CarReportSystem.infosys202005DataSetTableAdapters.CarReportTableAdapter();
             this.tableAdapterManager = new CarReportSystem.infosys202005DataSetTableAdapters.TableAdapterManager();
-            this.tbSearchDate = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tbSearchMaker = new System.Windows.Forms.TextBox();
+            this.接続ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dtpSearchDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.GroopBox.SuspendLayout();
             this.ファイルFToolStripMenuItem.SuspendLayout();
@@ -165,7 +166,7 @@
             // 
             this.dtpDate.Location = new System.Drawing.Point(98, 39);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(184, 19);
+            this.dtpDate.Size = new System.Drawing.Size(208, 19);
             this.dtpDate.TabIndex = 3;
             // 
             // cbAuthor
@@ -277,12 +278,14 @@
             // 
             // btEnd
             // 
-            this.btEnd.Location = new System.Drawing.Point(741, 553);
+            this.btEnd.BackColor = System.Drawing.Color.SkyBlue;
+            this.btEnd.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btEnd.Location = new System.Drawing.Point(918, 503);
             this.btEnd.Name = "btEnd";
-            this.btEnd.Size = new System.Drawing.Size(110, 28);
+            this.btEnd.Size = new System.Drawing.Size(160, 44);
             this.btEnd.TabIndex = 7;
             this.btEnd.Text = "終了";
-            this.btEnd.UseVisualStyleBackColor = true;
+            this.btEnd.UseVisualStyleBackColor = false;
             this.btEnd.Click += new System.EventHandler(this.btEnd_Click);
             // 
             // rbToyota
@@ -382,7 +385,7 @@
             this.ファイルFToolStripMenuItem1});
             this.ファイルFToolStripMenuItem.Location = new System.Drawing.Point(0, 0);
             this.ファイルFToolStripMenuItem.Name = "ファイルFToolStripMenuItem";
-            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(1168, 24);
+            this.ファイルFToolStripMenuItem.Size = new System.Drawing.Size(1141, 24);
             this.ファイルFToolStripMenuItem.TabIndex = 10;
             this.ファイルFToolStripMenuItem.Text = "ファイル(&F)";
             // 
@@ -391,7 +394,8 @@
             this.ファイルFToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.新規入力ToolStripMenuItem,
             this.終了XToolStripMenuItem,
-            this.開くToolStripMenuItem});
+            this.開くToolStripMenuItem,
+            this.接続ToolStripMenuItem});
             this.ファイルFToolStripMenuItem1.Name = "ファイルFToolStripMenuItem1";
             this.ファイルFToolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
             this.ファイルFToolStripMenuItem1.Text = "ファイル(&F)";
@@ -399,7 +403,7 @@
             // 新規入力ToolStripMenuItem
             // 
             this.新規入力ToolStripMenuItem.Name = "新規入力ToolStripMenuItem";
-            this.新規入力ToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.新規入力ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.新規入力ToolStripMenuItem.Text = "新規入力";
             this.新規入力ToolStripMenuItem.Click += new System.EventHandler(this.新規入力ToolStripMenuItem_Click_1);
             // 
@@ -407,14 +411,14 @@
             // 
             this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
             this.終了XToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click_1);
             // 
             // 開くToolStripMenuItem
             // 
             this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            this.開くToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.開くToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.開くToolStripMenuItem.Text = "開く";
             this.開くToolStripMenuItem.Click += new System.EventHandler(this.開くToolStripMenuItem_Click);
             // 
@@ -462,20 +466,45 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.groupBox1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.groupBox1.Controls.Add(this.dtpSearchDate);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.tbSearchMaker);
-            this.groupBox1.Controls.Add(this.tbSearchDate);
             this.groupBox1.Controls.Add(this.btSearchExe);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.tbSearchCarName);
             this.groupBox1.Location = new System.Drawing.Point(866, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(277, 243);
+            this.groupBox1.Size = new System.Drawing.Size(265, 222);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "検索";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(4, 66);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 12);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "メーカー";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 106);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(29, 12);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "日付";
+            // 
+            // tbSearchMaker
+            // 
+            this.tbSearchMaker.Location = new System.Drawing.Point(52, 66);
+            this.tbSearchMaker.Name = "tbSearchMaker";
+            this.tbSearchMaker.Size = new System.Drawing.Size(180, 19);
+            this.tbSearchMaker.TabIndex = 26;
             // 
             // btSearchExe
             // 
@@ -549,44 +578,26 @@
             this.tableAdapterManager.CarReportTableAdapter = this.carReportTableAdapter;
             this.tableAdapterManager.UpdateOrder = CarReportSystem.infosys202005DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // tbSearchDate
+            // 接続ToolStripMenuItem
             // 
-            this.tbSearchDate.Location = new System.Drawing.Point(52, 61);
-            this.tbSearchDate.Name = "tbSearchDate";
-            this.tbSearchDate.Size = new System.Drawing.Size(180, 19);
-            this.tbSearchDate.TabIndex = 26;
+            this.接続ToolStripMenuItem.Name = "接続ToolStripMenuItem";
+            this.接続ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.接続ToolStripMenuItem.Text = "接続";
+            this.接続ToolStripMenuItem.Click += new System.EventHandler(this.接続ToolStripMenuItem_Click);
             // 
-            // label9
+            // dtpSearchDate
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 64);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 12);
-            this.label9.TabIndex = 27;
-            this.label9.Text = "日付";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 102);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 12);
-            this.label10.TabIndex = 27;
-            this.label10.Text = "メーカー";
-            // 
-            // tbSearchMaker
-            // 
-            this.tbSearchMaker.Location = new System.Drawing.Point(52, 99);
-            this.tbSearchMaker.Name = "tbSearchMaker";
-            this.tbSearchMaker.Size = new System.Drawing.Size(180, 19);
-            this.tbSearchMaker.TabIndex = 26;
+            this.dtpSearchDate.Location = new System.Drawing.Point(52, 106);
+            this.dtpSearchDate.Name = "dtpSearchDate";
+            this.dtpSearchDate.Size = new System.Drawing.Size(180, 19);
+            this.dtpSearchDate.TabIndex = 28;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1168, 597);
+            this.ClientSize = new System.Drawing.Size(1141, 567);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvNewsData);
             this.Controls.Add(this.GroopBox);
@@ -684,9 +695,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btSearchExe;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox tbSearchDate;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbSearchMaker;
+        private System.Windows.Forms.ToolStripMenuItem 接続ToolStripMenuItem;
+        private System.Windows.Forms.DateTimePicker dtpSearchDate;
     }
 }
 

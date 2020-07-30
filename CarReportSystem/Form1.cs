@@ -213,6 +213,11 @@ namespace CarReportSystem
             //dgvNewsData.Columns[0].Visible = false; //idを非表示にする
         }
 
+        private void 接続ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.carReportTableAdapter.Fill(this.infosys202005DataSet.CarReport);
+        }
+
         //終了ボタン
         private void btEnd_Click(object sender, EventArgs e)
         {
@@ -397,14 +402,17 @@ namespace CarReportSystem
             inputItemAllClear();
         }
 
+        //実行ボタン
         private void btSearchExe_Click(object sender, EventArgs e)
         {
-            this.carReportTableAdapter.FillByCarName(this.infosys202005DataSet.CarReport, tbSearchCarName.Text);
 
-            this.carReportTableAdapter.FillByCreatedDate(this.infosys202005DataSet.CarReport, tbSearchDate.Text);
-            this.carReportTableAdapter.FillByCarMaker(this.infosys202005DataSet.CarReport, tbSearchMaker.Text);
+            //車名
+            this.carReportTableAdapter.FillByCarName(this.infosys202005DataSet.CarReport,tbSearchCarName.Text,tbSearchMaker.Text);
+            //メーカー
+            this.carReportTableAdapter.FillByCarName(this.infosys202005DataSet.CarReport,tbSearchCarName.Text,tbSearchMaker.Text);
+            //日付
+            this.carReportTableAdapter.FillByCreatedDate(this.infosys202005DataSet.CarReport, dtpSearchDate.Text, tbSearchCarName.Text, tbSearchMaker.Text);
 
         }
-
     }
 }
